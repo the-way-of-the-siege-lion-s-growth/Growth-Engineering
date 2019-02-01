@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.service.service.dao.ImagesDao">
+
+    <insert id="save" parameterType="com.service.service.model.Images">
+        insert into
+        images_table
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                name_,
+            </if>
+            <if test="fileKey!=null and fileKey!=''">
+                file_key_,
+            </if>
+            <if test="fileData!=null and fileData!=''">
+                file_data_,
+            </if>
+            <if test="url!=null and url!=''">
+                url_
+            </if>
+        </trim>
+        <trim prefix="values(" suffix=")" suffixOverrides=",">
+            <if test="name!=null and name!=''">
+                #{name},
+            </if>
+            <if test="fileKey!=null and fileKey!=''">
+                #{fileKey},
+            </if>
+            <if test="fileData!=null and fileData!=''">
+                #{fileData},
+            </if>
+            <if test="url!=null and url!=''">
+                #{url}
+            </if>
+        </trim>
+    </insert>
+
+    <select id="getAll" resultType="com.service.service.model.Images">
+        select
+         *
+        from
+        images_table
+    </select>
+
+
+
+</mapper>
